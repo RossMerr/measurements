@@ -1,4 +1,4 @@
-name: measurements
+name: measurements.dart
 description: Mass, Pressure, Temperature and Volume
 version: 0.0.1
 author:
@@ -9,3 +9,5 @@ environment:
 
 dependencies:
 
+dev_dependencies:
+  test: 1.14.3

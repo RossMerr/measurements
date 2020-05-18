@@ -45,38 +45,35 @@ class Temperature {
 
   Temperature toCelsius() {
     switch (_unit) {
-      case TemperatureUnit.Celsius:
-        return fromCelsius(_value);
       case TemperatureUnit.Fahrenheit:
-        return fromFahrenheit((_value * 9 / 5) + 32);
+        return fromCelsius((_value - 32) * 5 / 9);
       case TemperatureUnit.Kelvin:
-        return fromKelvin(_value + 273.15);
+        return fromCelsius(_value - 273.15);
+      default:
+        return fromCelsius(_value);
     }
-    return Temperature(_unit, _value);
   }
 
   Temperature toFahrenheit() {
     switch (_unit) {
-      case TemperatureUnit.Celsius:
-        return fromCelsius((_value - 32) * 5 / 9);
       case TemperatureUnit.Fahrenheit:
         return fromFahrenheit(_value);
       case TemperatureUnit.Kelvin:
-        return fromKelvin((value - 32) * 5 / 9 + 273.15);
+        return fromFahrenheit((value -273.15) * 9/5 + 32);
+      default:
+        return fromFahrenheit((_value *9 / 5) + 32);
     }
-    return Temperature(_unit, _value);
   }
 
   Temperature toKelvin() {
     switch (_unit) {
-      case TemperatureUnit.Celsius:
-        return fromCelsius(_value - 273.15);
       case TemperatureUnit.Fahrenheit:
-        return fromFahrenheit((_value - 273.15) * 9 / 5 + 32);
+        return fromKelvin((_value - 32) * 5/ 9 + 273.15);
       case TemperatureUnit.Kelvin:
         return fromKelvin(_value);
+      default:
+        return fromKelvin(_value + 273.15);
     }
-    return Temperature(_unit, _value);
   }
 
   static String temperatureUnitToString(TemperatureUnit unit) {
